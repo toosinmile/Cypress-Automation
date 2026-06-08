@@ -1,0 +1,23 @@
+{
+  "name": "cypress-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "test:registration": "cypress run --spec \"cypress/e2e/api/registration.cy.js\"",
+    "test:login": "cypress run --spec \"cypress/e2e/api/login.cy.js\"",
+    "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\"",
+    "test:ui:registration": "cypress run --spec \"cypress/e2e/ui/registration.cy.js\"",
+    "test:ui:login": "cypress run --spec \"cypress/e2e/ui/login.cy.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.16.0"
+  }
+}

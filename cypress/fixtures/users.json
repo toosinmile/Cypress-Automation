@@ -1,0 +1,15 @@
+{
+  "validPassword": "P@ssw0rd123!",
+  "weakPassword": "123",
+  "invalidEmails": [
+    "plainaddress",
+    "missing-at-sign.com",
+    "missing-domain@",
+    "@missing-local.com",
+    "spaces in@email.com"
+  ],
+  "knownInvalidLogin": {
+    "email": "definitely_not_a_registered_user_qa@example.com",
+    "password": "WrongPassword123!"
+  }
+}
