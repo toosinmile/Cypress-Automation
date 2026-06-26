@@ -6,6 +6,13 @@
 // "expected 403 to equal 200"-style assertion error.
 // ---------------------------------------------------------------------------
 Cypress.Commands.add("guardAgainstCloudflareBlock", (probeUrl = "/") => {
+  const base = Cypress.config("baseUrl") || "";
+
+  // Skip the guard entirely when running against a local server
+  if (base.startsWith("http://localhost") || base.startsWith("http://127.0.0.1")) {
+    return;
+  }
+
   return cy
     .request({ url: probeUrl, failOnStatusCode: false, log: false })
     .then((response) => {
@@ -21,7 +28,7 @@ Cypress.Commands.add("guardAgainstCloudflareBlock", (probeUrl = "/") => {
         throw new Error(
           [
             `BLOCKED BY CLOUDFLARE — target cannot be reached from this automated runner.`,
-            `  URL probed   : ${Cypress.config("baseUrl")}${probeUrl}`,
+            `  URL probed   : ${base}${probeUrl}`,
             `  HTTP status  : ${response.status}`,
             `  cf-mitigated : ${headers["cf-mitigated"] || "n/a"}`,
             `  cf-ray       : ${headers["cf-ray"] || "n/a"}`,
